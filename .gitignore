@@ -3,6 +3,8 @@
 !.gitignore
 server
 client
+!/src/server
+!/src/client
 minitalk
 *.a
 *.o
