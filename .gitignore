@@ -1,0 +1,11 @@
+.*
+!.github
+!.gitignore
+server
+client
+minitalk
+*.a
+*.o
+*.out
+out*
+*.log
