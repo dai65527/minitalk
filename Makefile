@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2021/06/17 20:40:16 by dnakano          ###   ########.fr        #
+#    Updated: 2021/06/18 14:51:25 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,11 @@ SERVERHEADERS	=	libft/libft.h
 SERVERNAME		=	server
 SERVEROUTPUTDIR	=	.
 SERVEROUTPUT	=	$(SERVEROUTPUTDIR)/$(SERVERNAME)
-CLIENTSRCNAME	=	client.c
+CLIENTSRCNAME	=	client.c minisend.c
 CLIENTSRCDIR	=	./src/client
 CLIENTSRCS		=	$(addprefix $(CLIENTSRCDIR)/,$(CLIENTSRCNAME))
 CLIENTOBJS		=	$(CLIENTSRCS:%.c=%.o)
-CLIENTHEADERS	=	libft/libft.h
+CLIENTHEADERS	=	libft/libft.h src/client/minitalk_client.h
 CLIENTNAME		=	client
 CLIENTOUTPUTDIR	=	.
 CLIENTOUTPUT	=	$(CLIENTOUTPUTDIR)/$(CLIENTNAME)
