@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 11:15:06 by dnakano           #+#    #+#             */
-/*   Updated: 2021/06/18 13:35:26 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/06/18 14:07:00 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	main(void)
 	struct	sigaction act;
 
 	pid = getpid();
-	ft_putstr_fd("minitalk server: launched: PID = ", STDOUT_FILENO);
+	ft_putstr_fd("[minitalk server] launched on PID = ", STDOUT_FILENO);
 	ft_putnbr_fd(pid, STDOUT_FILENO);
 	ft_putchar_fd('\n', STDOUT_FILENO);
 	act.sa_sigaction = handle_bit;
