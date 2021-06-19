@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 14:32:01 by dnakano           #+#    #+#             */
-/*   Updated: 2021/06/18 18:42:11 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/06/19 10:16:22 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	connect(pid_t pid)
 	if (pid < 1)
 		return (MINITALK_EINVAL);
 	if (signal(SIGUSR1, handlesig) == SIG_ERR
-			||  signal(SIGUSR2, handlesig) == SIG_ERR)
+		|| signal(SIGUSR2, handlesig) == SIG_ERR)
 		return (MINITALK_ESIGNAL);
 	if (kill(pid, SIGUSR1) == -1)
 		return (MINITALK_EKILL);
