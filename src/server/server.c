@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 11:15:06 by dnakano           #+#    #+#             */
-/*   Updated: 2021/06/19 10:12:48 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/06/19 10:27:07 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include "../../libft/libft.h"
 
-#define BUFSIZE 10
+#define BUFSIZE 2048
 
 int	checkpid(pid_t *pid, pid_t incomingpid)
 {
