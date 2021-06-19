@@ -9,5 +9,4 @@ minitalk
 *.a
 *.o
 *.out
-out*
 *.log

@@ -32,7 +32,7 @@ echo "Stoping server..." | tee -a test.log
 kill -INT $!
 echo "Server stoped" | tee -a test.log
 
-cat output_ref.log >> server_ref.log
+cat output_ref.txt >> server_ref.log
 
 echo "checking diff..." | tee -a test.log
 diff server.log server_ref.log >> test.log
