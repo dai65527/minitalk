@@ -22,5 +22,5 @@
          run: norminette
        - name: Run Test
          run: make test
-      #  - name: Run Test Bonus
-      #    run: make testbonus
+       - name: Run Test Bonus
+         run: make testbonus

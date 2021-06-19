@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2021/06/18 14:51:25 by dnakano          ###   ########.fr        #
+#    Updated: 2021/06/19 15:04:04 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,22 @@ CLIENTHEADERS	=	libft/libft.h src/client/minitalk_client.h
 CLIENTNAME		=	client
 CLIENTOUTPUTDIR	=	.
 CLIENTOUTPUT	=	$(CLIENTOUTPUTDIR)/$(CLIENTNAME)
+BONUSSERVERSRCNAME	=	server_bonus.c
+BONUSSERVERSRCDIR	=	./src/server
+BONUSSERVERSRCS		=	$(addprefix $(BONUSSERVERSRCDIR)/,$(BONUSSERVERSRCNAME))
+BONUSSERVEROBJS		=	$(BONUSSERVERSRCS:%.c=%.o)
+BONUSSERVERHEADERS	=	libft/libft.h
+BONUSSERVERNAME		=	server
+BONUSSERVEROUTPUTDIR	=	.
+BONUSSERVEROUTPUT	=	$(BONUSSERVEROUTPUTDIR)/$(BONUSSERVERNAME)
+BONUSCLIENTSRCNAME	=	client_bonus.c minisend_bonus.c
+BONUSCLIENTSRCDIR	=	./src/client
+BONUSCLIENTSRCS		=	$(addprefix $(BONUSCLIENTSRCDIR)/,$(BONUSCLIENTSRCNAME))
+BONUSCLIENTOBJS		=	$(BONUSCLIENTSRCS:%.c=%.o)
+BONUSCLIENTHEADERS	=	libft/libft.h src/client/minitalk_client_bonus.h
+BONUSCLIENTNAME		=	client
+BONUSCLIENTOUTPUTDIR	=	.
+BONUSCLIENTOUTPUT	=	$(BONUSCLIENTOUTPUTDIR)/$(BONUSCLIENTNAME)
 NAME			=	minitalk
 
 .SUFFIXES:		.o .c
@@ -47,9 +63,13 @@ $(CLIENTNAME):	$(LIBFT) $(CLIENTOBJS) $(CLIENTHEADERS)
 
 $(NAME):		$(SERVERNAME) $(CLIENTNAME)
 
-# .PHONY:			bonus
-# bonus:			$(LIBFT) $(BONUSOBJS) $(HEADERS)
-# 				$(CC) $(CFLAGS) $(BONUSOBJS) $(LDFLAGS) -o $(OUTPUT)
+bonus_server:	$(LIBFT) $(BONUSSERVEROBJS) $(BONUSSERVERHEADERS)
+				$(CC) $(CFLAGS) $(BONUSSERVEROBJS) $(LDFLAGS) -o $(BONUSSERVEROUTPUT)
+
+bonus_client:	$(LIBFT) $(BONUSCLIENTOBJS) $(BONUSCLIENTHEADERS)
+				$(CC) $(CFLAGS) $(BONUSCLIENTOBJS) $(LDFLAGS) -o $(BONUSCLIENTOUTPUT)
+
+bonus:			bonus_server bonus_client
 
 $(LIBFT):
 				make $(LIBFTNAME) -C $(LIBFTDIR)
@@ -63,17 +83,17 @@ test:			$(NAME)
 
 .PHONY:			testbonus
 testbonus:		bonus
-				cd test && ./test.sh bonus
+				cd test && ./test.sh
 
 .PHONY:			clean
 clean:
 				make fclean -C $(LIBFTDIR)
-				rm -f $(SERVEROBJS) $(CLIENTOBJS)
+				rm -f $(SERVEROBJS) $(CLIENTOBJS) $(BONUSSERVEROBJS) $(BONUSCLIENTOBJS)
 
 .PHONY:			fclean
 fclean:			clean
 				make clean -C $(LIBFTDIR)
-				rm -f $(OUTPUT)
+				rm -f $(SERVEROUTPUT) $(CLIENTOUTPUT)
 
 .PHONY:			re
 re:				fclean all
